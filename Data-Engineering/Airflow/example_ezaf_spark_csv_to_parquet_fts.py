@@ -20,7 +20,7 @@ dag = DAG(
     schedule_interval=None,
     tags=['e2e example', 'ezaf', 'spark', 'csv', 'parquet', 'fts'],
     params={
-        'username': Param("hpedemo-user01", type="string"),
+        'username': Param("ezua", type="string"),
         'training_path': Param("financial-processed", type="string"),
         's3_secret_name': Param("spark-s3-creds", type="string"),
         'airgap_registry_url': Param("", type=["null", "string"], pattern=r"^$|^\S+/$")
