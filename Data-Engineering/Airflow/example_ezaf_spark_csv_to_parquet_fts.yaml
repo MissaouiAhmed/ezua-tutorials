@@ -39,8 +39,3 @@ spec:
     memory: "512m"
     labels:
       version: 3.4.0
-  volumes:
-    - name: spark-data
-      persistentVolumeClaim:
-        claimName: {{dag_run.conf.get("username", "hpedemo-user01")}}-spark-pvc
-
