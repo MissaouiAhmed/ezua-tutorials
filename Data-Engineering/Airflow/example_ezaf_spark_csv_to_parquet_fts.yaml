@@ -33,22 +33,14 @@ spec:
     memory: "512m"
     labels:
       version: 3.4.0
-    volumeMounts:
-      - mountPath: /mnt/user
-        name: user-pvc
   executor:
     cores: 1
     instances: 2
     memory: "512m"
     labels:
       version: 3.4.0
-    volumeMounts:
-      - mountPath: /mnt/user
-        name: user-pvc
   volumes:
     - name: spark-data
       persistentVolumeClaim:
         claimName: {{dag_run.conf.get("username", "hpedemo-user01")}}-spark-pvc
-    - name: user-pvc
-      persistentVolumeClaim:
-        claimName: user-pvc
+
