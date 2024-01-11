@@ -21,7 +21,7 @@ spec:
   arguments:
     - s3a://ezaf-demo/data/financial.csv
     - csv
-    - file:///mounts/data/{{dag_run.conf.get("training_path", "financial-processed")}}
+    - file:///mnt/mnt/{{dag_run.conf.get("training_path", "financial-processed")}}
     - parquet
   restartPolicy:
     type: Never
@@ -34,8 +34,8 @@ spec:
     labels:
       version: 3.4.0
     volumeMounts:
-      - mountPath: /mounts/data/
-        name: spark-data
+      - mountPath: /mnt/user
+        name: user-data
   executor:
     cores: 1
     instances: 2
@@ -43,9 +43,12 @@ spec:
     labels:
       version: 3.4.0
     volumeMounts:
-      - mountPath: /mounts/data
-        name: spark-data
+      - mountPath: /mnt/user
+        name: user-data
   volumes:
     - name: spark-data
       persistentVolumeClaim:
         claimName: {{dag_run.conf.get("username", "hpedemo-user01")}}-spark-pvc
+     - name: user-data
+       persistentVolumeClaim:
+         claimName: user-pvc
