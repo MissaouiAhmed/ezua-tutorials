@@ -21,7 +21,7 @@ spec:
   arguments:
     - s3a://ezaf-demo/data/financial.csv
     - csv
-    - file:///mnt/mnt/{{dag_run.conf.get("training_path", "financial-processed")}}
+    - file:///mnt/user/{{dag_run.conf.get("training_path", "financial-processed")}}
     - parquet
   restartPolicy:
     type: Never
