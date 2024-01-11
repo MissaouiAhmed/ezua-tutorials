@@ -2,7 +2,7 @@ apiVersion: "sparkoperator.hpe.com/v1beta2"
 kind: SparkApplication
 metadata:
   name: spark-fts-{{dag_run.conf.get("username", "hpedemo-user01")}}-{{ts_nodash|replace("T", "")}}
-  namespace: spark
+  namespace: ezua
 spec:
   sparkConf:
     spark.mapr.extraconf.secret: {{dag_run.conf.get("s3_secret_name", "spark-s3-creds")}}
